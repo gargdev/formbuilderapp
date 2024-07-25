@@ -2,7 +2,15 @@ const mongoose = require('mongoose');
 
 const ResponseSchema = new mongoose.Schema({
   form: { type: mongoose.Schema.Types.ObjectId, ref: 'Form', required: true },
-  responses: [{ questionId: mongoose.Schema.Types.ObjectId, answer: [String] }],
+  responses: [
+    {
+      questionId: { type: mongoose.Schema.Types.ObjectId, ref: 'Form.questions' },
+      answer: [String],
+      image: String,
+      date: Date,
+      rating: Number,
+    },
+  ],
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
 });
 

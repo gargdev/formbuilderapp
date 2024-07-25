@@ -13,13 +13,20 @@ const FormSchema = new mongoose.Schema({
       },
       type: {
         type: String,
-        enum: ['single', 'multiple'],
+        enum: ['single', 'multiple', 'text', 'image', 'date', 'rating'],
         required: true,
       },
       options: [
         {
-          type: String,
-          required: true,
+          optionText: {
+            type: String,
+            required: function() {
+              return ['single', 'multiple'].includes(this.type);
+            },
+          },
+          image: {
+            type: String,
+          },
         },
       ],
     },

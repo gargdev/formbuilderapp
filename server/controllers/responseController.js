@@ -1,6 +1,6 @@
 const Response = require('../models/Response');
 
-// Submit response
+// Submit a response
 exports.submitResponse = async (req, res) => {
   const { formId, responses } = req.body;
   try {
@@ -16,6 +16,7 @@ exports.submitResponse = async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 // Get responses for form
 exports.getResponsesForForm = async (req, res) => {
